@@ -23,12 +23,6 @@ if "page" not in st.session_state:
 def navigate_to(page):
     st.session_state.page = page
 
-# Sidebar navigation
-def sidebar_navigation():
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", ["Home", "Customize Quiz", "Your Quiz"])
-    return page
-
 # Home Page
 def home_page():
     st.markdown("<h1 style='text-align: center;'>Welcome to Quiz Customizer 📚</h1>", unsafe_allow_html=True)
@@ -163,10 +157,12 @@ def quiz_page():
         navigate_to("home")
 
 # Render the current page based on session state
-page = sidebar_navigation()
-if page == "Home":
+if st.session_state.page == "home":
     home_page()
-elif page == "Customize Quiz":
+elif st.session_state.page == "customize":
     customize_page()
-elif page == "Your Quiz":
+elif st.session_state.page == "quiz":
     quiz_page()
+
+
+
